@@ -1,16 +1,18 @@
-# PureAir
+# 🌬️ PureAir
 
-O **PureAir** é um protótipo acadêmico de IoT para monitoramento da condição de filtros de ar-condicionado. O sistema utiliza um ESP32 para coletar dados de pressão, temperatura e horário da leitura, envia essas informações para uma API em Node.js e armazena os registros em banco de dados.
+O **PureAir** é um protótipo de IoT para monitoramento da condição de filtros de ar-condicionado.
 
-A proposta é apoiar a manutenção preventiva de filtros, indicando quando o equipamento está em condição normal, em atenção ou precisando de limpeza/manutenção.
+O sistema utiliza um **ESP32** para coletar dados de pressão, temperatura e horário da leitura. Essas informações são enviadas para uma **API em Node.js**, armazenadas em banco de dados e usadas para indicar o estado do filtro.
 
-## Objetivo
+A ideia é apoiar a manutenção preventiva, ajudando a identificar quando o filtro está em condição normal, em atenção ou precisando de limpeza/manutenção.
 
-Filtros de ar-condicionado geralmente são limpos ou trocados tarde demais, quando já existe perda de eficiência, mau cheiro, queda no fluxo de ar ou impacto na qualidade do ambiente.
+## 🎯 Objetivo
 
-O PureAir busca resolver esse problema com um sistema simples de monitoramento, combinando sensores, armazenamento de dados e alertas para apoiar decisões de manutenção com base em medições reais.
+Filtros de ar-condicionado geralmente são limpos ou trocados tarde demais, apenas quando já existe perda de eficiência, mau cheiro, queda no fluxo de ar ou piora na qualidade do ambiente.
 
-## Funcionalidades
+O **PureAir** busca resolver esse problema com um sistema simples de monitoramento, combinando sensores, armazenamento de dados e alertas para apoiar decisões de manutenção com base em medições reais.
+
+## ⚙️ Funcionalidades
 
 - Leitura periódica de sensores pelo ESP32.
 - Envio dos dados para o backend via HTTP POST.
@@ -22,7 +24,7 @@ O PureAir busca resolver esse problema com um sistema simples de monitoramento, 
 - Envio opcional de alertas via WhatsApp.
 - Classificação do filtro por status: verde, amarelo e vermelho.
 
-## Tecnologias Utilizadas
+## 🧰 Tecnologias Utilizadas
 
 - **ESP32**
 - **Arduino/C++**
@@ -35,18 +37,157 @@ O PureAir busca resolver esse problema com um sistema simples de monitoramento, 
 - **RTClib**
 - **Sensores de pressão/temperatura**
 
-## Arquitetura
-
-## Arquitetura
+## 🏗️ Arquitetura
 
 ```mermaid
 flowchart LR
     ESP32["ESP32"] -->|POST /dados| API["API Node.js"]
     ESP32 -->|modo offline| SD["Cartão SD"]
+    SD -->|sincronização posterior| ESP32
+
     API --> PG["PostgreSQL"]
     API --> MYSQL["MySQL/TiDB opcional"]
     API --> ALERTA["Alerta WhatsApp opcional"]
+
     DASH["Dashboard / Cliente"] -->|GET /api/*| API
-    API --> MYSQL["MySQL/TiDB opcional"]
-    API --> ALERTA["Alerta WhatsApp opcional"]
-    DASH["Dashboard / Cliente"] -->|GET /api/*| API
+```
+
+## 📁 Estrutura do Projeto
+
+```text
+Arduino/
+  codigoFinal_pureair.ino
+  config.example.h
+
+server/
+  server.js
+  package.json
+  package-lock.json
+  .env.example
+
+docs/
+  project-summary.md
+```
+
+## 🚀 Como Executar o Backend
+
+Entre na pasta do servidor:
+
+```powershell
+cd server
+```
+
+Instale as dependências:
+
+```powershell
+npm install
+```
+
+Crie o arquivo de variáveis de ambiente:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Configure o arquivo `.env` com os dados do banco e integrações opcionais.
+
+Inicie a API:
+
+```powershell
+npm start
+```
+
+## 🔌 Principais Endpoints
+
+### Receber dados do ESP32
+
+```http
+POST /dados
+```
+
+Exemplo de payload:
+
+```json
+{
+  "timestamp": "2025-10-21T14:30:00",
+  "temperatura": 25.4,
+  "pressao_barometrica": 1008.2,
+  "pressao_barometrica_final": 1011.7,
+  "status_filtro": "VERDE"
+}
+```
+
+### Consultar últimas medições
+
+```http
+GET /medidas
+```
+
+### Consultar última leitura
+
+```http
+GET /api/latest
+```
+
+### Consultar leituras recentes
+
+```http
+GET /api/recent?limit=50
+```
+
+### Consultar status atual
+
+```http
+GET /api/status
+```
+
+### Consultar estatísticas
+
+```http
+GET /api/stats
+```
+
+## 🤖 Configuração do Firmware
+
+Copie o arquivo de exemplo:
+
+```text
+Arduino/config.example.h
+```
+
+Crie um arquivo chamado:
+
+```text
+Arduino/config.h
+```
+
+Configure nele os dados da rede Wi-Fi e o endereço do backend:
+
+```cpp
+#define WIFI_SSID "nome-da-rede"
+#define WIFI_PASSWORD "senha-da-rede"
+
+#define SERVER_IP "192.168.1.10"
+#define SERVER_PORT 3000
+#define SERVER_PATH "/dados"
+```
+
+Depois abra o arquivo abaixo na Arduino IDE:
+
+```text
+Arduino/codigoFinal_pureair.ino
+```
+
+Instale as bibliotecas necessárias e envie o código para o ESP32.
+
+## 📚 Bibliotecas Necessárias no Arduino
+
+- ArduinoJson
+- SdFat
+- RTClib
+- Adafruit Unified Sensor
+- Adafruit BMP085 Unified ou biblioteca compatível com o sensor utilizado
+
+## 📌 Status do Projeto
+
+Projeto desenvolvido como parte do **Projeto Integrador I**.
