@@ -69,34 +69,6 @@ docs/
   project-summary.md
 ```
 
-## 🚀 Como Executar o Backend
-
-Entre na pasta do servidor:
-
-```powershell
-cd server
-```
-
-Instale as dependências:
-
-```powershell
-npm install
-```
-
-Crie o arquivo de variáveis de ambiente:
-
-```powershell
-Copy-Item .env.example .env
-```
-
-Configure o arquivo `.env` com os dados do banco e integrações opcionais.
-
-Inicie a API:
-
-```powershell
-npm start
-```
-
 ## 🔌 Principais Endpoints
 
 ### Receber dados do ESP32
@@ -167,7 +139,7 @@ Configure nele os dados da rede Wi-Fi e o endereço do backend:
 #define WIFI_SSID "nome-da-rede"
 #define WIFI_PASSWORD "senha-da-rede"
 
-#define SERVER_IP "192.168.1.10"
+#define SERVER_IP "xx"
 #define SERVER_PORT 3000
 #define SERVER_PATH "/dados"
 ```
