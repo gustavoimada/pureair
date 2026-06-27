@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+server/node_modules/
+Arduino/libraries/
+Arduino/**/libraries/
+
+# Environment and secrets
+.env
+.env.*
+!*.env.example
+secrets.h
+*secrets*.h
+Arduino/config.h
+
+# Build/runtime artifacts
+dist/
+build/
+coverage/
+*.log
+*.tmp
+
+# Arduino generated/offline data
+offline_data/
+pendentes.txt
+*.bin
+*.elf
+*.hex
+
+# Archives and local handoff files
+*.zip
+*.rar
+*.7z
+
+# Private course/report files
+*.docx
+
+# OS/editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

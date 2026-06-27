@@ -1,0 +1,27 @@
+{
+  "name": "pureair",
+  "version": "1.0.0",
+  "description": "IoT air-filter monitoring backend for ESP32 sensor data.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js"
+  },
+  "keywords": [
+    "iot",
+    "esp32",
+    "nodejs",
+    "postgresql",
+    "air-quality"
+  ],
+  "author": "Gustavo Imada",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mysql2": "^3.15.3",
+    "pg": "^8.16.3"
+  }
+}
