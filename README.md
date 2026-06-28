@@ -1,4 +1,10 @@
-# 🌬️ PureAir
+# 🌬️ PureAir <p align="left">
+  <img src="https://img.shields.io/badge/Status-Completed-brightgreen" />
+  <img src="https://img.shields.io/badge/IoT-ESP32-blue" />
+  <img src="https://img.shields.io/badge/Arduino-C%2B%2B-orange" />
+  <img src="https://img.shields.io/badge/Node.js-Express-339933" />
+  <img src="https://img.shields.io/badge/Database-PostgreSQL-336791" />
+</p>
 
 O **PureAir** é um protótipo de IoT para monitoramento da condição de filtros de ar-condicionado.
 
