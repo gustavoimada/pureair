@@ -1,4 +1,5 @@
-# 🌬️ PureAir <p align="left">
+# 🌬️ PureAir 
+<p align="left">
   <img src="https://img.shields.io/badge/Status-Completed-brightgreen" />
   <img src="https://img.shields.io/badge/IoT-ESP32-blue" />
   <img src="https://img.shields.io/badge/Arduino-C%2B%2B-orange" />
