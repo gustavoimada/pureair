@@ -13,6 +13,8 @@ O sistema utiliza um **ESP32** para coletar dados de pressão, temperatura e hor
 
 A ideia é apoiar a manutenção preventiva, ajudando a identificar quando o filtro está em condição normal, em atenção ou precisando de limpeza/manutenção.
 
+<img width="738" height="1600" alt="WhatsApp Image 2026-07-19 at 17 06 02" src="https://github.com/user-attachments/assets/e148d3cc-56a0-4649-8e6b-527992bd1562" />
+
 ## 🎯 Objetivo
 
 Filtros de ar-condicionado geralmente são limpos ou trocados tarde demais, apenas quando já existe perda de eficiência, mau cheiro, queda no fluxo de ar ou piora na qualidade do ambiente.
